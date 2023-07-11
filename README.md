@@ -1,16 +1,14 @@
-# todo_app
+# Flutter todo app
 
-A new Flutter project.
+Todo list project designed to learn and understand flutter.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features
+To the insane who want to use this:
+(also secretly a checklist)
++ [ ] Add and remove entries
++ [ ] Edit entries
++ [ ] read to/write from file
++ [ ] Ability to tag list items and search by the tag
++ [ ] Interface that works on different desktop window/phone configs
++ [ ] add sub-items to todo list entries for grouping and organization
++ [ ] Markdown support
