@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                 color: theme.colorScheme.background,
                 border: Border.all(),
               ),
-              child: const TodoList(),
+              child: const TodoListWidget(),
             ),
           ),
           if (constraints.maxWidth >= 600)

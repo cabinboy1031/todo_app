@@ -1,17 +1,17 @@
 /// The to-do list itself. Should be the first screen seen on startup.
 import 'package:flutter/material.dart';
 
-class TodoList extends StatefulWidget {
-  const TodoList({
+class TodoListWidget extends StatefulWidget {
+  const TodoListWidget({
     super.key,
   });
 
   @override
-  State<TodoList> createState() => _TodoListState();
+  State<TodoListWidget> createState() => _TodoListWidgetState();
 }
 
-class _TodoListState extends State<TodoList> {
-  var todoList = <String>[];
+class _TodoListWidgetState extends State<TodoListWidget> {
+  var _list = TodoList();
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,14 @@ class _TodoListState extends State<TodoList> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        TextButton(onPressed: () {}, child: const Icon(Icons.menu)),
-                        TextButton(onPressed: () {}, child: const Icon(Icons.edit)),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Icon(Icons.menu),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Icon(Icons.edit),
+                        ),
                       ],
                     )
                   ],
@@ -61,4 +67,39 @@ class _TodoListState extends State<TodoList> {
       ],
     );
   }
+}
+
+class ListItem {
+  var _name = "";
+  var _body = "";
+  var _tags = [];
+
+  ListItem(String name, String body) {
+    _name = name;
+    _body = _body;
+  }
+
+  void add_tag(String tag) {
+    _tags.add(tag);
+  }
+
+  void remove_tag(String tag) {
+    _tags.remove(tag);
+  }
+
+  bool has_tag(String tag) {
+    return _tags.contains(tag);
+  }
+}
+
+class TodoList {
+  List<ListItem> _data = <ListItem>[];
+
+  void add(ListItem item) => _data.add(item);
+
+  void remove(ListItem item) => _data.remove(item);
+
+  ListItem get(int idx) => _data[idx];
+
+  // TODO serialize functions to/from json
 }
