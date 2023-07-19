@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'todo_list.dart';
+import 'desktop_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,47 +34,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-    var listFlex;
-    return LayoutBuilder(builder: (context, constraints) {
-      return Row(
-        children: [
-          Expanded(
-            flex: constraints.maxWidth > 900 ? 1 : 2,
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.colorScheme.background,
-                border: Border.all(),
-              ),
-              child: const TodoListWidget(),
-            ),
-          ),
-          if (constraints.maxWidth >= 600)
-            const Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text("Title:"),
-                        Text("Tags:"),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 9,
-                    child: Text("Body:"),
-                  ),
-                ],
-              ),
-            ),
-        ],
-      );
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth > 900) {
+          return const DesktopView();
+        } else {
+          return const Placeholder();
+        }
+      },
+    );
   }
 }
