@@ -1,10 +1,10 @@
-/// The to-do list itself. Should be the first screen seen on startup.
 import 'package:flutter/material.dart';
+import './todo_edit_screen.dart';
 
 class ListItem {
   var _name = "";
   var _body = "";
-  var _tags = [];
+  final _tags = [];
   bool selected = false;
 
   ListItem(String name, String body) {
@@ -38,6 +38,24 @@ class TodoList extends StatefulWidget {
 class _TodoListState extends State<TodoList> {
   List<ListItem> data = <ListItem>[];
 
+  Future<void> _navigateAndAddNewItem(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      // Create the SelectionScreen in the next step.
+      MaterialPageRoute(builder: (context) => TodoEditScreen()),
+    );
+
+    if (!mounted) return;
+
+    if (result != null) {
+      setState(() {
+        data.add(result);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -55,16 +73,15 @@ class _TodoListState extends State<TodoList> {
                 title: Text(data[index].getName),
               );
             }).build(context),
-        Container(
-          alignment: Alignment.bottomLeft,
-          child: ElevatedButton(
-            onPressed: () {
-              // Navigate to new page
-              setState(() {
-                data.add(ListItem("Test", "Test Body"));
-              });
-            },
-            child: const Icon(Icons.add),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: ElevatedButton(
+                child: const Icon(Icons.add),
+                onPressed: () {
+                  _navigateAndAddNewItem(context);
+                }),
           ),
         ),
       ],

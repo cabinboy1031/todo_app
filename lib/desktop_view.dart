@@ -6,6 +6,6 @@ class DesktopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TodoList();
+    return const TodoList();
   }
 }

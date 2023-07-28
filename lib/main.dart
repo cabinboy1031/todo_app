@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
         if (constraints.maxWidth > 900) {
           return const DesktopView();
         } else {
-          return TodoList();
+          return const TodoList();
         }
       },
     );
