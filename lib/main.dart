@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/todo_list.dart';
 import 'desktop_view.dart';
 
 void main() {
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
         if (constraints.maxWidth > 900) {
           return const DesktopView();
         } else {
-          return const Placeholder();
+          return TodoList();
         }
       },
     );
